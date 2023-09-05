@@ -1,0 +1,2 @@
+C:\Users\janik\source\repos\WebApps\WebAppReact\KirjautumisLomake\Kirjaudu\obj\Debug\kirjaudu.esproj.SuggestedBindingRedirects.cache
+C:\Users\janik\source\repos\WebApps\WebAppReact\KirjautumisLomake\Kirjaudu\obj\Debug\kirjaudu.esproj.CoreCompileInputs.cache

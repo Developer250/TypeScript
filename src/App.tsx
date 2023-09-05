@@ -14,7 +14,8 @@ function App() {
                     <button className="btn">login</button>
                 </div>
             </div>
-        </div>
+            </div>
+        
   );
 }
 

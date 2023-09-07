@@ -1,29 +1,33 @@
-import React, { useState } from 'react';
+import react, { useState } from 'react';
 import './App.css';
-function App()
+
+function App() {
 //Initializing the username's, password's and error's states, so we can keep on track where is input going
-{
+
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
-    const [email, setEmail] = useState("");
-
-    const regex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+    const [phone, setPhone] = useState("");
 
     //The validation logic goes here
-    const submit = (e: any, number: number, Boolean: true) => {
+    const submit = (e: any) => {
         e.preventDefault();
 
         if (!username || !password) {
             setError("All fields must be filled!");
         }
-        if (!regex.test(email))
-            setError('Please enter a valid email address');
 
-        else {
+        else if (phone.length !== 10) {
+            setError("Please enter phone number");
+
+        }
+
+     else {
+            setError(""); // Clear any previous errors
             alert("Form has been submitted succesfully!");
 
         }
+    };
         //Form
         return (
             <form>
@@ -38,15 +42,13 @@ function App()
                                 value={username}
                                 onChange={(e) => setUsername(e.target.value)}
                             />
-
                             <input
-
-                                className="email"
-                                placeholder="enter your email"
-                                name="email"
-                                type={email}
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
+                                className="phone"
+                                placeholder="enter your phone number"
+                                name="phone"
+                                type="tel"
+                                value={phone}
+                                onChange={(e) => setPhone(e.target.value)}
                             ></input>
 
                             <input
@@ -70,5 +72,4 @@ function App()
             </form>
         );
     }
-}
 export default App;

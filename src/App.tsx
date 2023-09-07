@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import './App.css';
 
-function App() {
+function App()
+    //Initializing the username's, password's and error's states, so we can keep on track where is input going
+{
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
 
+    //The validation logic goes here
     const submit = (e: any) => {
         e.preventDefault();
 
@@ -18,6 +21,7 @@ function App() {
 
     }
 
+    //Form
     return (
         <form>
             <div className="login">
@@ -37,6 +41,7 @@ function App() {
                             type="password"
                             name="password"
                             value={password}
+                            //Function call = onChange
                             onChange={(e) => setPassword(e.target.value)}
                         />
                     </div>

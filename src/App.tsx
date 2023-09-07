@@ -1,58 +1,55 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react';
 import './App.css';
 
 function App() {
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
 
-    const submit = () => {
+    const submit = (e: any) => {
+        e.preventDefault();
 
-        alert("Your form has been sent succesfully!");
+        if (!username || !password) {
+            setError("All fields must be filled!");
+        }
+        else {
+            alert("Form has been submitted succesfully!");
+        }
+
     }
-    function form() {
-        const [username, setUsername] = useState({
-            username: "",
-            password: "", 
-        });
 
-        const [errors, setErrors] = useState({ });
-
-        const validateValues = (inputValues: { username: ""; password: ""; }) => {
-            let errors = {};
-            if (inputValues.username.length < 15) {
-                errors.username = "Email is too short";
-            }
-            if (inputValues.password.length < 5) {
-                errors.password = "Password is too short";
-            }
-            
-            }
-            return errors;
-    };
-
-    const handleChange = (e: any) => {
-        setInputFields({ ...setInputFields, [e.target.name]: e.target.value });
-    };
-
-        return (
+    return (
+        <form>
             <div className="login">
                 <div className="loginbox">
                     <div className="loginheader">Login</div>
                     <div className="inputs">
-                        <input className="username"
-                            type="text" placeholder="enter your username" onChange={handleChange}
-                        ></input>
-                        <input className="password"
+                        <input
+                            className="username"
+                            type="text"
+                            placeholder="enter your username"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                        />
+                        <input
+                            className="password"
                             placeholder="enter your password"
-                            type="password" onChange={handleChange}
+                            type="password"
                             name="password"
-                        ></input>
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
                     </div>
+                    {error && <div className="error"> {error}</div>}
                     <div>
-                        <button onClick={submit} className="btn" type="submit">Login</button>
+                        <button onClick={submit} className="btn" type="submit">
+                            Login
+                        </button>
                     </div>
                 </div>
             </div>
-        );
+        </form>
+    );
 }
-export default App;
 
+export default App;
